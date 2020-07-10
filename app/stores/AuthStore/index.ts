@@ -5,7 +5,6 @@ class AuthStore {
   constructor(authService: AuthService) {
     this.authService = authService;
   }
-
   // implement AuthStore
 }
 

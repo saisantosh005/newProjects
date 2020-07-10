@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 // import {Practice} from './app/components/Practice';
 import {SignUpForm} from './app/components/SignUpForm';
 
@@ -16,7 +16,6 @@ import {SignUpForm} from './app/components/SignUpForm';
 const App = () => {
   return (
     <View style={[styles.normal, styles.ok]}>
-      <TextInput style={[styles.text]}>HOdf</TextInput>
       <SignUpForm />
     </View>
   );
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
 export default App;
 
 // {/* <Practice /> */}
+// {/* <TextInput style={[styles.text]}>HOdf</TextInput> */}
 
 // /**
 //  * Sample React Native App
