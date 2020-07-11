@@ -3,7 +3,7 @@ import {Picker, Slider} from 'react-native';
 
 import styled from 'styled-components/native';
 
-// import RadioForm from 'react-native-simple-radio-button';
+import RadioForm from 'react-native-simple-radio-button';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -55,12 +55,12 @@ const FormSection = styled.View`
   padding: 10px;
   margin: 20px;
 `;
-// const RadioButtonSection = styled(RadioForm)`
-//   flex: 1;
-//   flex-direction: row;
-//   justify-content: space-around;
-//   padding: 0px 20px;
-// `;
+const RadioButtonSection = styled(RadioForm)`
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0px 20px;
+`;
 
 const SelectBranch = styled.View`
   flex: 1;
@@ -132,7 +132,7 @@ export {
   StyledTextInput,
   ColorSectionAndForm,
   FormSection,
-  // RadioButtonSection,
+  RadioButtonSection,
   SelectBranch,
   StyledPicker,
   DOBSection,

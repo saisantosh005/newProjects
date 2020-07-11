@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, Picker, Button} from 'react-native';
+import {View, ScrollView, Picker, Button, Text} from 'react-native';
 import {
   MainHeading,
   NameField,
@@ -21,17 +21,19 @@ import {
   TypeSpeedSection,
   TypeSpeed,
   ColorInput,
+  RadioButtonSection,
 } from './styledComponents';
 import {observer} from 'mobx-react';
 import {observable, action} from 'mobx';
 import {ColorPicker, fromHsv} from 'react-native-color-picker';
+import {Modal} from 'react-native-router-flux';
 
 @observer
 class SignUpForm extends Component {
   @observable gender!: string;
   @observable color_One: any = '#00ace6';
   @observable color_Two: any = '#9933ff';
-  // @observable visible!: boolean;
+  @observable visible!: boolean;
   // renderRadioButton = () => {
   //   return [
   //     {category: 'Male', id: 0},
@@ -48,13 +50,29 @@ class SignUpForm extends Component {
   //     );
   //   });
   // };
+  @action.bound
+  changeTheModalVisibility() {
+    this.visible = true;
+  }
+  @action.bound
+  closeTheModel() {
+    this.visible = false;
+  }
+
+  renderModal = () => {
+    return (
+      <Modal>
+        <Text>Modal</Text>
+      </Modal>
+    );
+  };
   renderSignUpButton = () => {
     return (
       <Button
         color="red"
         title="Sign up"
         onPress={() => {
-          console.log(1);
+          this.changeTheModalVisibility;
         }}
       />
     );
@@ -105,26 +123,26 @@ class SignUpForm extends Component {
       </SelectBranch>
     );
   };
-  // renderRadioButton = () => {
-  //   const radio_props = [
-  //     {label: 'Male', value: 0},
-  //     {label: 'Female', value: 1},
-  //     {label: 'Other', value: 3},
-  //   ];
-  //   return (
-  //     <RadioButtonSection
-  //       initial={0}
-  //       onPress={(value: string) => (this.gender = value)}
-  //       radio_props={radio_props}
-  //       formHorizontal={false}
-  //       labelHorizontal={true}
-  //       buttonColor={'#50C900'}
-  //       animation={true}
-  //       buttonInnerColor={'gray'}
-  //       buttonSize={10}
-  //     />
-  //   );
-  // };
+  renderRadioButton = () => {
+    const radio_props = [
+      {label: 'Male', value: 0},
+      {label: 'Female', value: 1},
+      {label: 'Other', value: 3},
+    ];
+    return (
+      <RadioButtonSection
+        initial={0}
+        onPress={(value: string) => (this.gender = value)}
+        radio_props={radio_props}
+        formHorizontal={false}
+        labelHorizontal={true}
+        buttonColor={'#50C900'}
+        animation={true}
+        buttonInnerColor={'gray'}
+        buttonSize={10}
+      />
+    );
+  };
 
   renderMail = () => {
     return (
@@ -185,6 +203,7 @@ class SignUpForm extends Component {
         {this.renderAddressSection()}
         {this.renderTypeSpeedSection()}
         {this.renderSignUpButton()}
+        {this.renderModal()}
       </FormSection>
     );
   }
